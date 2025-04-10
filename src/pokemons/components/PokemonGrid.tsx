@@ -1,3 +1,4 @@
+"use client";
 import { SimplePokemon } from "../interfaces/simple-pokemons";
 import { PokemonCard } from "./PokemonCard";
 
