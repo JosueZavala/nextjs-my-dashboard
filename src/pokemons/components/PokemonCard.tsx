@@ -5,7 +5,6 @@ import Image from "next/image";
 import { IoHeart, IoHeartOutline } from "react-icons/io5";
 import { useAppDispatch, useAppSelector } from "@/store";
 import { toggleFavorite } from "@/store/pokemons/pokemons";
-import { useEffect } from "react";
 
 interface Props {
   pokemon: SimplePokemon;
@@ -14,17 +13,12 @@ interface Props {
 export const PokemonCard = ({ pokemon }: Props) => {
   const { id, name } = pokemon;
 
-  const isFavorite = useAppSelector((state) => !!state.pokemons[id]);
-  const pokemonsStore = useAppSelector((state) => state.pokemons);
+  const isFavorite = useAppSelector((state) => !!state.pokemons.favorites[id]);
   const dispatch = useAppDispatch();
 
   const onToggle = () => {
     dispatch(toggleFavorite(pokemon));
   };
-
-  /* useEffect(() => {
-    console.log({ pokemonsStore });
-  }, [pokemonsStore]); */
 
   return (
     <div className="mx-auto right-0 mt-2 w-60">
